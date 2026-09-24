@@ -15,12 +15,12 @@ body{min-height:100vh} a{color:inherit;text-decoration:none}
 .hero-stage{position:sticky;top:0;height:100svh;overflow:hidden;background:#000}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.58) saturate(.88)}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.74),rgba(0,0,0,.12) 62%,rgba(0,0,0,.36)),linear-gradient(0deg,rgba(0,0,0,.32),transparent 50%)}
-.micro-nav{position:absolute;z-index:8;top:0;left:0;right:0;padding:22px 4.5vw;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.7)}
+.micro-nav{position:absolute;z-index:8;top:0;left:0;right:0;padding:22px 4.5vw;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.7)}.micro-brand{width:132px;height:auto;display:block}
 .start-panel{position:absolute;z-index:7;inset:0;pointer-events:none;transition:opacity .08s linear}
 .hero-brand{position:absolute;top:11vh;left:6vw;font-size:clamp(54px,9.4vw,146px);font-weight:700;letter-spacing:.07em;line-height:.78}
 .hero-brand:after{content:"";display:block;width:34%;height:4px;background:linear-gradient(90deg,var(--teal),#74d0e2);margin-top:24px}
 .hero-main{position:absolute;left:6vw;top:38%;width:min(520px,45vw)}
-.hero-main .code{font-size:10px;color:var(--teal);letter-spacing:.18em;margin-bottom:16px}
+
 .hero-main h1{margin:0;font-size:clamp(48px,6.5vw,96px);line-height:.86;letter-spacing:-.055em;font-weight:430}
 .hero-main p{margin:18px 0 0;color:rgba(255,255,255,.68);font-size:12px;line-height:1.55;max-width:420px}
 .conf{position:absolute;right:7vw;top:28%;width:210px;text-align:center}
@@ -40,7 +40,7 @@ body{min-height:100vh} a{color:inherit;text-decoration:none}
 
 .process{height:520vh;background:var(--ink);position:relative}
 .process-stage{position:sticky;top:0;height:100svh;overflow:hidden}
-.process-bg{position:absolute;inset:0;background:url('IMG_3351.jpeg') center/cover no-repeat;filter:brightness(.32) saturate(.8);transform:scale(1.04)}
+.process-bg{position:absolute;inset:0;background:url('/pelagic-preview/IMG_3351.jpeg') center/cover no-repeat;filter:brightness(.32) saturate(.8);transform:scale(1.04)}
 .process-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,16,18,.97) 0%,rgba(6,16,18,.88) 45%,rgba(6,16,18,.36) 72%,rgba(6,16,18,.65))}
 .process-copy{position:absolute;z-index:3;left:6vw;top:11vh;width:min(620px,84vw)}
 .process-copy h2{font-size:clamp(52px,7vw,104px);margin:12px 0 0;line-height:.9;letter-spacing:-.06em;font-weight:480}
@@ -52,7 +52,7 @@ body{min-height:100vh} a{color:inherit;text-decoration:none}
 .process-meter{position:absolute;left:6vw;bottom:8vh;z-index:4;width:280px;height:2px;background:rgba(255,255,255,.14)}.process-meter span{display:block;height:2px;width:0;background:var(--teal)}
 
 .products{min-height:120vh;position:relative;background:#071113;color:white;display:flex;align-items:end;overflow:hidden}
-.products:before{content:"";position:absolute;inset:0;background:url('IMG_3351.jpeg') center/cover no-repeat;filter:brightness(.38) saturate(.9);transform:scale(1.02)}
+.products:before{content:"";position:absolute;inset:0;background:url('/pelagic-preview/IMG_3351.jpeg') center/cover no-repeat;filter:brightness(.38) saturate(.9);transform:scale(1.02)}
 .products:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,16,18,.96),rgba(6,16,18,.15) 62%,rgba(6,16,18,.38))}
 .products-inner{position:relative;z-index:2;width:88vw;margin:0 auto;padding:100px 0 90px}
 .products-title{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:48px}
@@ -81,39 +81,41 @@ body{min-height:100vh} a{color:inherit;text-decoration:none}
 .footer{background:#030708;padding:28px 6vw;display:flex;justify-content:space-between;color:#657370;font-size:9px;letter-spacing:.16em;text-transform:uppercase}
 
 @media(max-width:850px){
- .hero-brand{top:12vh;left:22px;font-size:clamp(48px,17vw,78px)}.hero-main{left:22px;top:38%;width:70vw}.hero-main h1{font-size:clamp(48px,14vw,68px)}
- .conf{right:18px;top:21%;width:150px}.conf .big{font-size:17px}.actions{right:18px;top:auto;bottom:70px;width:190px}.action{font-size:11px;padding:12px}
+ .hero-brand{top:12vh;left:22px;width:min(530px,58vw)}.hero-main{left:22px;top:38%;width:70vw}.hero-main h1{font-size:clamp(48px,14vw,68px)}
+ .conf{right:18px;top:23%;width:190px}.sticky-actions{top:12px;right:12px}
  .film-card{left:22px}.film-card.final{left:22px}
  .steps{right:18px;width:46vw;top:15vh}.process-copy{left:22px;top:10vh;width:48vw}.process-copy h2{font-size:clamp(40px,11vw,64px)}.process-copy .sub{font-size:13px}
  .products-inner{width:calc(100vw - 42px)}.products-title{display:block}.products-title p{margin-top:20px}.product-cols{grid-template-columns:1fr}.product-col,.product-col+.product-col{border-right:0;border-bottom:1px solid rgba(255,255,255,.14);padding:24px 0}
  .people-wrap,.cta-wrap{grid-template-columns:1fr}.photo-placeholder{min-height:420px}.logo-grid{grid-template-columns:1fr;gap:16px}.footer{display:block;line-height:1.9}
 }
 @media(max-width:600px){
- .hero{height:560vh}.micro-nav{padding:18px 16px}.micro-nav span:last-child{display:none}
- .hero-brand:after{height:3px}.conf{top:22%;right:12px}.hero-main{top:42%;width:78vw}.hero-main p{font-size:11px}.actions{display:none}
+ .hero{height:560vh}.micro-nav{padding:18px 16px}.micro-nav span:last-child{display:none}.micro-brand{width:105px}
+ .hero-brand{top:14vh;left:20px;width:72vw}.conf{top:24%;right:12px;width:145px}.hero-main{top:43%;width:78vw}.hero-main p{font-size:11px}.sticky-actions{top:10px;right:10px;gap:6px}.sticky-share{padding:8px 10px;min-height:42px}.sticky-share .share-copy span:last-child{display:none}.sticky-share .share-icon{width:24px;height:24px}.sticky-book{min-height:42px;padding:0 12px;font-size:9px}
  .film-card{width:calc(100vw - 58px);padding:20px}.film-card h2{font-size:36px}.film-card ul{font-size:14px}
  .process{height:500vh}.process-copy{top:8vh;left:20px;width:calc(100vw - 40px)}.process-copy .sub{max-width:76vw}.steps{left:20px;right:20px;top:auto;bottom:8vh;width:auto;background:rgba(6,16,18,.62);padding:8px 16px;backdrop-filter:blur(8px)}.step{display:none}.step.active{display:block;transform:none;border:0;padding:12px 0}.process-meter{left:20px;bottom:4vh;width:calc(100vw - 40px)}
  .products{min-height:135vh}.products-inner{padding:80px 0 60px}.products-title h2{font-size:52px}
- .people,.logos,.cta{padding:80px 22px}.people-wrap,.cta-wrap{width:100%}.logos h2{font-size:46px}.logo-name{min-height:90px}
+ .people,.logos,.cta{padding:80px 22px}.people-wrap,.cta-wrap{width:100%}.logos h2{font-size:46px}.client-logos-art{width:100%}
 }
 </style>
 </head>
 <body>
+<div class="sticky-actions" aria-label="Conference actions">
+  <button class="sticky-share" id="sharePage" type="button"><span class="share-icon">↗</span><span class="share-copy"><strong>Interested?</strong><span>Forward to your operations team</span></span></button>
+  <a class="sticky-book" href="#">Book meeting</a>
+</div>
 <section class="hero" id="hero">
  <div class="hero-stage">
-  <video id="film" muted playsinline webkit-playsinline preload="auto"><source src="../pelagic-film-scrub-small.mp4#t=0.01" type="video/mp4"></video>
+  <video id="film" muted playsinline webkit-playsinline preload="auto"><source src="/pelagic-preview/pelagic-film-scrub-small.mp4#t=0.01" type="video/mp4"></video>
   <div class="hero-shade"></div>
-  <div class="micro-nav"><span>PELAGIC</span><span>EXPEDITION / 2026</span></div>
+  <div class="micro-nav"><img class="micro-brand" src="/pelagic-preview/assets/pelagic-logo-white.png" alt="Pelagic"><span>EXPEDITION / 2026</span></div>
 
   <div class="start-panel" id="startPanel">
-    <div class="hero-brand">PELAGIC</div>
+    <div class="hero-brand"><img src="/pelagic-preview/assets/pelagic-logo-white.png" alt="Pelagic"></div>
     <div class="hero-main">
-      <div class="code">04 / CAPABILITY</div>
       <h1>ONE<br>PARTNER.<br>END TO<br>END.</h1>
       <p>Design · Development · Manufacturing · Quality Control · Global Logistics</p>
     </div>
-    <div class="conf"><div class="ecn">— ECN —</div><div class="small">EXPEDITION CRUISE NETWORK</div><div class="big">CONFERENCE</div></div>
-    <div class="actions"><div class="action">Interested?<br>Forward this link to your operations team</div><div class="action secondary">Book Meeting Now</div></div>
+    <div class="conf"><img src="/pelagic-preview/assets/ecn-logo.webp" alt="Expedition Cruise Network Conference"></div>
   </div>
 
   <div class="film-overlay">
@@ -171,12 +173,7 @@ body{min-height:100vh} a{color:inherit;text-decoration:none}
 <section class="logos">
  <div class="eyebrow">Selected expedition relationships</div>
  <h2>PROUDLY CREATING & SUPPLYING FOR</h2>
- <div class="logo-grid">
-  <div class="logo-name"><div>Polar Latitudes<small>EXPEDITIONS</small></div></div>
-  <div class="logo-name"><div>Antarctica21</div></div>
-  <div class="logo-name"><div>Aurora Expeditions</div></div>
-  <div class="logo-name"><div>Poseidon Expeditions</div></div>
- </div>
+ <img class="client-logos-art" src="/pelagic-preview/assets/client-logos.jpg" alt="Polar Latitudes Expeditions, Antarctica21, Aurora Expeditions and Poseidon Expeditions">
 </section>
 
 <section class="cta">
@@ -208,6 +205,8 @@ film.addEventListener('loadedmetadata',()=>{ready=true;try{film.currentTime=.01}
 document.addEventListener('touchstart',unlock,{passive:true,once:true});document.addEventListener('pointerdown',unlock,{passive:true,once:true});
 addEventListener('scroll',()=>{schedule();if(isTouch&&!unlocked)unlock()},{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('pageshow',schedule);
 if(!isTouch){(function tick(){target=prog(hero);heroUI(target);current+=(target-current)*.14;seek(current);processUI(prog(process));requestAnimationFrame(tick)})()}else{film.load();schedule()}
+const sharePage=document.getElementById('sharePage');
+sharePage.addEventListener('click',async()=>{const data={title:'PELAGIC — One Product Partner. Every Step.',text:'PELAGIC conference landing page',url:location.href};try{if(navigator.share){await navigator.share(data)}else{await navigator.clipboard.writeText(location.href);const strong=sharePage.querySelector('strong');const old=strong.textContent;strong.textContent='Link copied';setTimeout(()=>strong.textContent=old,1600)}}catch(e){}});
 </script>
 </body>
 </html>
