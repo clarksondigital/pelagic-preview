@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>PELAGIC — Draft 02</title>
+<style>
+:root{
+  --ink:#071011;
+  --navy:#07133e;
+  --teal:#21b8b5;
+  --cyan:#7fd1df;
+  --ice:#e9efed;
+  --paper:#f2f3ef;
+  --muted:#aab7b6;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;max-width:100%;overflow-x:clip;background:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff}
+a{color:inherit}
+section{width:100%;max-width:100%}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.wrap{width:min(1480px,88vw);margin:0 auto}
+.hero{height:620vh;position:relative;background:#000}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden;background:#000}
+.film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.64) saturate(.9)}
+.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.16) 58%,rgba(0,0,0,.22) 100%),linear-gradient(0deg,rgba(0,0,0,.45),transparent 46%)}
+.nav{position:absolute;z-index:6;top:0;left:0;right:0;padding:26px 5vw;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.24em}
+.nav .brand{font-size:19px;font-weight:700;letter-spacing:.34em}
+.nav .right{display:flex;gap:28px;align-items:center;color:rgba(255,255,255,.72)}
+.nav .pill{border:1px solid rgba(255,255,255,.3);padding:10px 14px;border-radius:30px}
+.copy{position:absolute;z-index:5;left:6vw;top:50%;transform:translateY(-50%);width:min(920px,80vw)}
+.chapter{position:absolute;left:0;top:50%;transform:translateY(-50%);opacity:0}
+.chapter:first-child{opacity:1}
+.chapter h1,.chapter h2{font-weight:460;letter-spacing:-.058em;line-height:.88;margin:0;font-size:clamp(56px,7.4vw,116px)}
+.chapter p{font-size:clamp(16px,1.4vw,22px);line-height:1.55;color:rgba(255,255,255,.72);max-width:660px}
+.progress{position:absolute;right:30px;top:22%;height:56%;width:1px;background:rgba(255,255,255,.18);z-index:6}
+.progress span{display:block;width:1px;height:0;background:var(--teal)}
+.scrollnote{position:absolute;left:6vw;bottom:28px;z-index:6;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+.intro{background:var(--paper);color:var(--ink);padding:125px 0 135px}
+.intro-top{display:grid;grid-template-columns:1.1fr .9fr;gap:9vw;align-items:end}
+.intro h2,.system h2,.proof h2,.people h2,.cta h2{font-size:clamp(48px,6.4vw,96px);line-height:.94;letter-spacing:-.055em;margin:18px 0 0;font-weight:500}
+.intro-copy{font-size:19px;line-height:1.65;color:#465252;max-width:620px}
+.worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:80px}
+.world{border-top:1px solid rgba(7,16,17,.23);padding:26px 4px 40px;min-height:340px;position:relative}
+.world .num{font-size:11px;letter-spacing:.18em;color:#3d8f89}
+.world h3{font-size:clamp(34px,3.5vw,56px);margin:96px 0 18px;letter-spacing:-.04em;font-weight:500}
+.world p{max-width:410px;color:#52605f;line-height:1.6}
+.world .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}
+.tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(7,16,17,.18);padding:8px 10px;border-radius:30px}
+
+.memory{background:#dfe5e2;color:var(--ink);padding:125px 0}
+.memory-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:7vw;align-items:start}
+.memory h2{font-size:clamp(48px,6vw,90px);line-height:.92;letter-spacing:-.055em;font-weight:500;margin:16px 0 24px}
+.memory p{font-size:18px;line-height:1.65;color:#465252;max-width:560px}
+.product-map{position:relative;width:100%;overflow:hidden}
+.product-map img{display:block;width:100%;height:auto;filter:saturate(.92) contrast(1.02)}
+.memory-caption{margin-top:20px;display:flex;justify-content:space-between;gap:28px;border-top:1px solid rgba(7,16,17,.18);padding-top:18px}
+.memory-caption strong{font-size:12px;letter-spacing:.15em;text-transform:uppercase}
+.memory-caption span{color:#596564;max-width:650px;line-height:1.5}
+
+.system{background:var(--ink);padding:130px 0 145px;position:relative;overflow:hidden}
+.system:before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(33,184,181,.13),transparent 68%);right:-260px;top:-180px}
+.system-head{display:grid;grid-template-columns:1.15fr .85fr;gap:8vw;align-items:end}
+.system-head p{max-width:560px;color:#a6b4b2;line-height:1.65;font-size:18px}
+.process{margin-top:86px;border-top:1px solid rgba(255,255,255,.16)}
+.step{display:grid;grid-template-columns:90px .8fr 1.2fr;gap:28px;border-bottom:1px solid rgba(255,255,255,.14);padding:34px 0;align-items:center;transition:background .2s ease}
+.step:hover{background:rgba(255,255,255,.025)}
+.step .n{font-size:12px;color:var(--teal);letter-spacing:.14em}
+.step h3{font-size:clamp(28px,3.1vw,46px);margin:0;font-weight:500;letter-spacing:-.035em}
+.step p{margin:0;color:#9dacaa;line-height:1.55;max-width:650px}
+.step .line{height:2px;width:42px;background:var(--teal);margin-top:12px}
+
+.range{background:#0b1617;padding:120px 0 135px}
+.range-head{display:flex;justify-content:space-between;gap:50px;align-items:end;margin-bottom:54px}
+.range-head h2{font-size:clamp(46px,5.6vw,84px);letter-spacing:-.05em;line-height:.94;margin:14px 0 0;font-weight:500;max-width:900px}
+.range-head p{max-width:480px;color:#9baaa8;line-height:1.6}
+.range-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.range-card{min-height:420px;border:1px solid rgba(255,255,255,.13);padding:28px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,rgba(255,255,255,.025),rgba(255,255,255,0))}
+.range-card .num{color:var(--teal);font-size:11px;letter-spacing:.14em}
+.range-card h3{font-size:42px;letter-spacing:-.04em;margin:0 0 14px;font-weight:500}
+.range-card p{color:#9eacaa;line-height:1.55}
+.range-card ul{padding:0;margin:28px 0 0;list-style:none;color:#d3dcda;line-height:1.9;font-size:14px}
+
+.proof{background:var(--paper);color:var(--ink);padding:125px 0}
+.proof-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:8vw;align-items:start}
+.proof p{color:#52605f;line-height:1.65;font-size:18px;max-width:570px}
+.client-block{border-top:1px solid rgba(7,16,17,.18)}
+.client{padding:26px 0;border-bottom:1px solid rgba(7,16,17,.18);display:flex;justify-content:space-between;gap:20px;align-items:center}
+.client strong{font-size:clamp(22px,2.1vw,34px);font-weight:500;letter-spacing:-.025em}
+.client span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#58706d}
+
+.people{background:#d8e0dc;color:var(--ink);padding:120px 0 130px}
+.people-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:8vw;align-items:end}
+.people-card{min-height:520px;background:#0a1516;color:white;padding:36px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.people-card:before{content:"REAL CONFERENCE PHOTOGRAPH";position:absolute;top:30px;left:30px;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.44)}
+.people-card:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:1px solid rgba(33,184,181,.35);right:-140px;top:-110px;box-shadow:0 0 0 90px rgba(33,184,181,.03),0 0 0 180px rgba(33,184,181,.02)}
+.people-card .names{position:relative;z-index:2}
+.people-card .names div{font-size:clamp(34px,4vw,58px);letter-spacing:-.04em}
+.people-copy p{color:#4c5a59;line-height:1.65;font-size:18px;max-width:600px}
+.people-copy .button{display:inline-block;margin-top:24px;border:1px solid var(--ink);padding:14px 18px;text-transform:uppercase;font-size:11px;letter-spacing:.14em;text-decoration:none}
+
+.cta{background:var(--teal);color:var(--ink);padding:120px 0 135px}
+.cta-inner{display:grid;grid-template-columns:1.3fr .7fr;gap:8vw;align-items:end}
+.cta p{font-size:19px;line-height:1.6;max-width:600px}
+.cta-actions{display:flex;justify-content:flex-end}
+.cta a{display:inline-block;border:1px solid var(--ink);padding:17px 22px;text-decoration:none;font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+
+.footer{background:#050a0b;color:#879391;padding:35px 6vw;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+
+@media(max-width:950px){
+  .intro-top,.memory-grid,.system-head,.proof-grid,.people-grid,.cta-inner{grid-template-columns:1fr;gap:42px}
+  .worlds,.range-grid{grid-template-columns:1fr}
+  .world{min-height:250px}.world h3{margin-top:65px}
+  .step{grid-template-columns:48px 1fr}.step p{grid-column:2}
+  .range-head{display:block}.range-head p{margin-top:24px}
+  .cta-actions{justify-content:flex-start}
+}
+@media(max-width:700px){
+  .wrap{width:calc(100vw - 42px)}
+  .hero{height:500vh}
+  .nav{padding:20px 18px}.nav .right{display:none}.nav .brand{font-size:15px}
+  .copy{left:22px;right:28px;width:auto}
+  .chapter h1,.chapter h2{font-size:clamp(44px,13vw,61px)}
+  .chapter p{font-size:16px}.progress{right:13px}.scrollnote{left:22px}
+  .intro,.memory,.system,.range,.proof,.people,.cta{padding:82px 0 90px}
+  .intro h2,.memory h2,.system h2,.proof h2,.people h2,.cta h2,.range-head h2{font-size:clamp(42px,12vw,62px)}
+  .memory-grid{gap:30px}.memory-caption{display:block}.memory-caption span{display:block;margin-top:12px;font-size:14px}
+  .step{padding:26px 0}.step h3{font-size:30px}.step p{font-size:14px}
+  .range-card{min-height:330px}
+  .people-card{min-height:390px}
+  .footer{display:block;line-height:1.8}
+}
+</style>
+</head>
+<body>
+<section class="hero" id="hero">
+  <div class="stage">
+    <video id="film" class="film" muted playsinline webkit-playsinline preload="auto">
+      <source src="pelagic-film-scrub-small.mp4#t=0.01" type="video/mp4">
+    </video>
+    <div class="shade"></div>
+    <div class="nav"><div class="brand">PELAGIC</div><div class="right"><span>EXPEDITION / 2026</span><span class="pill">START A CONVERSATION</span></div></div>
+    <div class="copy">
+      <div class="chapter">
+        <div class="eyebrow">The product and supply partner behind extraordinary journeys</div>
+        <h1>EXCELLENCE.<br>MADE.<br>PERSONAL.</h1>
+        <p>Bespoke product programmes, guest gifting and crew apparel built around the expedition experience.</p>
+      </div>
+      <div class="chapter">
+        <div class="eyebrow">01 / Experience</div>
+        <h2>BUILT FOR THE EXPERIENCE.</h2>
+        <p>Products designed around your guests, your crew and your brand.</p>
+      </div>
+      <div class="chapter">
+        <div class="eyebrow">02 / Detail</div>
+        <h2>DESIGNED DOWN TO THE DETAIL.</h2>
+        <p>Useful, relevant products developed as part of one coherent brand experience.</p>
+      </div>
+      <div class="chapter">
+        <div class="eyebrow">03 / Product</div>
+        <h2>EXPERIENCES PEOPLE TAKE WITH THEM.</h2>
+        <p>Guest gifting, apparel and expedition products that continue the journey beyond the voyage.</p>
+      </div>
+      <div class="chapter">
+        <div class="eyebrow">04 / Capability</div>
+        <h2>ONE PARTNER.<br>EVERY STEP.</h2>
+        <p>Design · Development · Manufacturing · Quality Control · Global Logistics</p>
+      </div>
+      <div class="chapter">
+        <div class="eyebrow">05 / Expedition</div>
+        <h2>FROM IDEA TO EXPEDITION.</h2>
+        <p>One partner coordinating the physical product journey from requirement to delivery.</p>
+      </div>
+    </div>
+    <div class="progress"><span id="bar"></span></div>
+    <div class="scrollnote">Scroll to explore</div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <div class="intro-top">
+      <div>
+        <div class="eyebrow">Made for expedition</div>
+        <h2>THE PHYSICAL DETAILS THAT BECOME PART OF THE JOURNEY.</h2>
+      </div>
+      <div class="intro-copy">From the jacket a guest wears on deck to the welcome gift waiting in their cabin, the physical product experience should feel as considered as the expedition itself.</div>
+    </div>
+    <div class="worlds">
+      <article class="world"><div class="num">01 / GUEST</div><h3>Guest</h3><p>Useful, memorable products designed around the voyage and the places your guests are travelling to.</p><div class="tags"><span class="tag">Gifting</span><span class="tag">Outerwear</span><span class="tag">Travel</span><span class="tag">Drinkware</span></div></article>
+      <article class="world"><div class="num">02 / CREW</div><h3>Crew</h3><p>Uniform programmes designed around the people representing your brand in demanding environments.</p><div class="tags"><span class="tag">Waterproof</span><span class="tag">Insulated</span><span class="tag">Polos</span><span class="tag">Fleece</span></div></article>
+      <article class="world"><div class="num">03 / BRAND</div><h3>Brand</h3><p>Products and merchandise that carry the expedition experience beyond the ship and into everyday life.</p><div class="tags"><span class="tag">Retail</span><span class="tag">Merchandise</span><span class="tag">Events</span><span class="tag">Bespoke</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="memory">
+  <div class="wrap memory-grid">
+    <div>
+      <div class="eyebrow">Guest gifting, considered as a system</div>
+      <h2>EXPERIENCES PEOPLE TAKE WITH THEM.</h2>
+      <p>The opportunity is not a bag of unrelated merchandise. It is a small, coherent collection shaped by the expedition: useful on the journey, consistent with the brand and worth keeping afterwards.</p>
+    </div>
+    <div>
+      <div class="product-map"><img src="IMG_3351.jpeg" alt="Pelagic expedition guest gifting collection"></div>
+      <div class="memory-caption"><strong>One programme. One design language.</strong><span>Outerwear, drinkware, travel accessories, presentation, packaging and finishing developed to work together.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="system">
+  <div class="wrap">
+    <div class="system-head">
+      <div><div class="eyebrow">One partner. Every step.</div><h2>FROM REQUIREMENT TO DELIVERY.</h2></div>
+      <p>The difference is not simply finding a product. Pelagic can coordinate the disciplines that turn an idea into a finished programme, reducing the number of moving parts your team has to manage.</p>
+    </div>
+    <div class="process">
+      <div class="step"><div class="n">01</div><div><h3>DESIGN</h3><div class="line"></div></div><p>Translate the requirement into a clear product direction shaped around the expedition, audience and brand.</p></div>
+      <div class="step"><div class="n">02</div><div><h3>DEVELOPMENT</h3><div class="line"></div></div><p>Materials, specification, sampling and refinement before the programme moves into production.</p></div>
+      <div class="step"><div class="n">03</div><div><h3>MANUFACTURING</h3><div class="line"></div></div><p>Coordinate production through appropriate manufacturing partners for the product and programme.</p></div>
+      <div class="step"><div class="n">04</div><div><h3>QUALITY CONTROL</h3><div class="line"></div></div><p>Check finish, specification and consistency before products move into final distribution.</p></div>
+      <div class="step"><div class="n">05</div><div><h3>GLOBAL LOGISTICS</h3><div class="line"></div></div><p>Coordinate products to the locations and timings required by an international expedition operation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="range">
+  <div class="wrap">
+    <div class="range-head">
+      <div><div class="eyebrow">A product ecosystem, not a catalogue</div><h2>ONE EXPEDITION. MANY PHYSICAL TOUCHPOINTS.</h2></div>
+      <p>The range can flex by programme while the visual language, specification and experience remain consistent.</p>
+    </div>
+    <div class="range-grid">
+      <article class="range-card"><div class="num">MERCHANDISE</div><div><h3>Brand</h3><p>Products guests actively choose to buy and continue using after the voyage.</p><ul><li>Apparel & headwear</li><li>Drinkware</li><li>Patches & accessories</li><li>Travel products</li></ul></div></article>
+      <article class="range-card"><div class="num">GUEST GIFTING</div><div><h3>Guest</h3><p>Considered items that add value at key moments before, during and after the journey.</p><ul><li>Passport wallets</li><li>Luggage tags</li><li>Drybags</li><li>Binoculars & expedition essentials</li></ul></div></article>
+      <article class="range-card"><div class="num">STAFF UNIFORMS</div><div><h3>Crew</h3><p>Layered apparel programmes for guest-facing teams working across changing conditions.</p><ul><li>Waterproof jackets</li><li>Insulated jackets</li><li>Polos & shirts</li><li>Fleece & knitwear</li></ul></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap proof-grid">
+    <div>
+      <div class="eyebrow">Selected relationships</div>
+      <h2>BUILT AROUND THE EXPEDITION SECTOR.</h2>
+      <p>This area is deliberately simple in the draft. If Pelagic is cleared to show these relationships publicly, the finished version should use the approved client marks and any specific programme examples we can substantiate.</p>
+    </div>
+    <div class="client-block">
+      <div class="client"><strong>Polar Latitudes</strong><span>Client / Partner</span></div>
+      <div class="client"><strong>Antarctica21</strong><span>Client / Partner</span></div>
+      <div class="client"><strong>Aurora Expeditions</strong><span>Client / Partner</span></div>
+      <div class="client"><strong>Poseidon Expeditions</strong><span>Client / Partner</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="people">
+  <div class="wrap people-grid">
+    <div class="people-card"><div class="names"><div>JOEL.</div><div>JOHN.</div></div></div>
+    <div class="people-copy">
+      <div class="eyebrow">The people behind Pelagic</div>
+      <h2>A PARTNER YOU CAN ACTUALLY TALK TO.</h2>
+      <p>The finished version should use the real conference photograph here. This section adds a human proof point after the capability story and gives visitors a clear route into an actual conversation.</p>
+      <a class="button" href="#">Meet Pelagic →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div><div class="eyebrow" style="color:#071011">Start a conversation</div><h2>LET'S BUILD YOUR NEXT PROGRAMME.</h2><p>Tell us what you're trying to create. Pelagic can help work out how to design it, develop it and get it where it needs to go.</p></div>
+    <div class="cta-actions"><a href="#">Start a conversation →</a></div>
+  </div>
+</section>
+
+<footer class="footer"><span>PELAGIC / EXPEDITION PRODUCT PROGRAMMES</span><span>DRAFT 02 / SEPTEMBER 2026</span></footer>
+
+<script>
+const hero=document.getElementById('hero');
+const v=document.getElementById('film');
+const bar=document.getElementById('bar');
+const chs=[...document.querySelectorAll('.chapter')];
+const isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+let target=0,current=0,ready=false,unlocked=false,rafPending=false;
+v.muted=true;v.defaultMuted=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+function progress(){const r=hero.getBoundingClientRect();const vh=window.visualViewport?window.visualViewport.height:window.innerHeight;const max=Math.max(1,hero.offsetHeight-vh);return Math.max(0,Math.min(1,-r.top/max));}
+function updateCopy(p){bar.style.height=(p*100)+'%';const scaled=p*(chs.length-1);chs.forEach((c,i)=>{const d=Math.abs(scaled-i);c.style.opacity=Math.max(0,1-d*1.8);c.style.transform='translateY(calc(-50% + '+((i-scaled)*18)+'px))';});}
+function seek(p){if(!ready||!isFinite(v.duration)||v.duration<=0)return;const t=Math.max(.01,Math.min(v.duration-.05,p*(v.duration-.05)));if(Math.abs(v.currentTime-t)>.02){try{v.currentTime=t}catch(e){}}}
+function sync(){rafPending=false;target=progress();updateCopy(target);if(isTouch)seek(target);}
+function schedule(){if(!rafPending){rafPending=true;requestAnimationFrame(sync);}}
+function unlock(){if(unlocked)return;unlocked=true;const p=v.play();if(p&&p.then){p.then(()=>{v.pause();ready=true;schedule();}).catch(()=>{unlocked=false;});}}
+v.addEventListener('loadedmetadata',()=>{ready=true;try{v.currentTime=.01}catch(e){}schedule();});
+v.addEventListener('canplay',()=>{ready=true;schedule();});
+document.addEventListener('touchstart',unlock,{passive:true,once:true});
+document.addEventListener('pointerdown',unlock,{passive:true,once:true});
+window.addEventListener('scroll',()=>{schedule();if(isTouch&&!unlocked)unlock();},{passive:true});
+window.addEventListener('resize',schedule,{passive:true});
+window.addEventListener('pageshow',()=>{schedule();if(isTouch&&!unlocked)unlock();});
+if(!isTouch){function tick(){target=progress();updateCopy(target);current+=(target-current)*.14;seek(current);requestAnimationFrame(tick)}tick()}else{v.load();schedule()}
+</script>
+</body>
+</html>
